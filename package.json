@@ -1,0 +1,25 @@
+{
+  "name": "cleanblog",
+  "version": "1.0.0",
+  "description": "clean blog ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fatihgumus59/CleanBlog.git"
+  },
+  "keywords": [
+    "blog"
+  ],
+  "author": "Fatih Gümüş",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fatihgumus59/CleanBlog/issues"
+  },
+  "homepage": "https://github.com/fatihgumus59/CleanBlog#readme",
+  "devDependencies": {
+    "prettier": "2.5.1"
+  }
+}
