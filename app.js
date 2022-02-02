@@ -19,8 +19,8 @@ app.use(express.json());
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
-app.get('/', (req, res) => {
-  const posts = Post.find({});
+app.get('/', async (req, res) => {
+  const posts = await Post.find({});
   res.render('index', {
     posts,
     title: 'Home',
