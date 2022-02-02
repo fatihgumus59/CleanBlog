@@ -24,18 +24,24 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
-        <form novalidate>
+
+        <form action="/post-add" method="post">
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
+              <label>Author Name</label>
+              <input type="text" class="form-control" placeholder="Author Name" name="author" required data-validation-required-message="Please enter your Author.">
+              <p class="help-block text-danger"></p>
+            </div>
+            <div class="form-group floating-label-form-group controls">
               <label>Post Title</label>
-              <input type="text" class="form-control" placeholder="Name" id="name" required data-validation-required-message="Please enter your name.">
+              <input type="text" class="form-control" placeholder="Title" name="title" required data-validation-required-message="Please enter your Title.">
               <p class="help-block text-danger"></p>
             </div>
           </div>
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
               <label>Post Detail</label>
-              <textarea rows="5" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Please enter a message."></textarea>
+              <textarea rows="5" class="form-control" placeholder="Post Details" name="detail" required data-validation-required-message="Please enter a Details."></textarea>
               <p class="help-block text-danger"></p>
             </div>
           </div>
@@ -43,6 +49,7 @@
           <div id="success"></div>
           <button type="submit" class="btn btn-primary" id="sendMessageButton">Send</button>
         </form>
+
       </div>
     </div>
   </div>
