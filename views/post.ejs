@@ -35,7 +35,7 @@
 
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
               <a href="/posts/edit/<%= post._id %>"><button type="button" class="btn btn-primary mr-2">UPDATE</button></a>
-              <a href="/posts/<%= post._id%>?_method=DELETE"><button type="button" class="btn btn-danger">DELETE</button></a>
+              <a href="/posts/<%= post._id%>?_method=DELETE"><button onclick="return confirm('Silmek istediğinize emin misiniz ?')" type="button" class="btn btn-danger">DELETE</button></a>
             </div>
         </div>
       </div>

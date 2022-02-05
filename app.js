@@ -68,8 +68,8 @@ app.put('/posts/:id', async (req, res) => {
 });
 
 app.delete('/posts/:id', async (res, req) => {
-  console.log(req.params.id);
-
+  await Post.findByIdAndRemove(req.params.id);
+  res.redirect('/');
 });
 
 const port = 3000;
