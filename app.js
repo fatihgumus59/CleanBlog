@@ -2,7 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 var methodOverride = require('method-override');
 
-const path = require('path');
 const ejs = require('ejs');
 
 const Post = require('./models/Post');
@@ -49,17 +48,15 @@ app.post('/post-add', async (req, res) => {
   res.redirect('/');
 });
 
-app.get('/posts/edit/:id', async (req,res)=>{
-  const post = await Post.findOne({_id: req.params.id})
+app.get('/posts/edit/:id', async (req, res) => {
+  const post = await Post.findOne({ _id: req.params.id });
 
-  res.render('edit-post',{
+  res.render('edit-post', {
     post,
-    title: "Edit Page"
-  })
+    title: 'Edit Page',
+  });
+});
 
-})
-
-/* 
 app.put('/posts/:id', async (req, res) => {
   const post = await Post.findOne({ _id: req.params.id });
   post.author = req.body.author;
@@ -68,11 +65,13 @@ app.put('/posts/:id', async (req, res) => {
 
   post.save();
   res.redirect(`/posts/${req.params.id}`);
-  res.render('post', {
-    title: post.title,
-  });
 });
-*/
+
+app.delete('/posts/:id', async (res, req) => {
+  console.log(req.params.id);
+
+});
+
 const port = 3000;
 
 app.listen(port, () => {
