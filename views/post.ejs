@@ -32,6 +32,11 @@
           <p>Post add by
             <a href="#"><%= post.author%></a>. Post Title
             <a href="#"><%= post.title%></a>.</p>
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <a href="/posts/edit/<%= post._id %>"><button type="button" class="btn btn-primary mr-2">UPDATE</button></a>
+              <a href="<%= post._id %>"><button type="button" class="btn btn-danger">DELETE</button></a>
+            </div>
         </div>
       </div>
     </div>
