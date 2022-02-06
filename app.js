@@ -2,10 +2,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 var methodOverride = require('method-override');
 
-const path = require('path');
 const ejs = require('ejs');
 
-const Post = require('./models/Post');
+
+const postController = require('./controllers/postController');
+const pageController = require('./controllers/pageController');
 
 const app = express();
 
@@ -21,58 +22,15 @@ app.use(methodOverride('_method', { methods: ['GET', 'POST'] }));
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
-app.get('/', async (req, res) => {
-  const posts = await Post.find({});
-  res.render('index', {
-    posts,
-    title: 'Home',
-  });
-});
+app.get('/', postController.getAllPost);
+app.get('/posts/:id', postController.getPost);
+app.post('/posts', postController.createPost);
+app.put('/posts/:id', postController.updatePost);
+app.delete('/posts/:id', postController.deletePost);
 
-app.get('/posts/:id', async (req, res) => {
-  const post = await Post.findById(req.params.id);
-  res.render('post', {
-    post,
-    title: post.title,
-  });
-});
-
-app.get('/about', (req, res) => {
-  res.render('about', { title: 'About' });
-});
-
-app.get('/add_post', (req, res) => {
-  res.render('add_post', { title: 'Add Post' });
-});
-
-app.post('/posts', async (req, res) => {
-  await Post.create(req.body);
-  res.redirect('/');
-});
-
-app.get('/posts/edit/:id', async (req, res) => {
-  const post = await Post.findOne({ _id: req.params.id });
-  res.render('edit-post', {
-    post,
-    title: `${post.title} | Edit Page`,
-  });
-});
-
-app.put('/posts/:id', async (req, res) => {
-  const post = await Post.findOne({ _id: req.params.id });
-
-  post.title = req.body.title;
-  post.detail = req.body.detail;
-  post.author = req.body.author;
-
-  post.save();
-  res.redirect(`/posts/${req.params.id}`);
-});
-
-app.delete('/posts/:id', async (req, res) => {
-  await Post.findByIdAndRemove(req.params.id);
-  res.redirect('/');
-});
+app.get('/about', pageController.getAbout);
+app.get('/add_post', pageController.getAddPost);
+app.get('/posts/edit/:id', pageController.getEditPage);
 
 const port = 3000;
 
